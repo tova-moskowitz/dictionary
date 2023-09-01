@@ -1,38 +1,77 @@
-.App {
-  text-align: center;
+.wrapper {
+  margin: auto;
+  width: 500px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.book-logo {
+  height: 36px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.settings-bar {
+  /* border: 1px orangered solid; */
+  height: 36px;
+  margin-bottom: 52px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-bar {
+  /* border: 1px blue solid; */
+  height: 45px;
+  background: #f4f4f4;
+  border-radius: 11px;
+  margin-bottom: 35px;
+}
+
+.search-input {
+  margin-top: 23px;
+  margin-left: 20px;
+  background: #f4f4f4;
+  border: none;
+}
+
+.search-input::placeholder {
+  color: #2d2d2d;
+  font-size: 0.9rem;
+  font-weight: 700;
+  width: 211px;
+  height: 24px;
+}
+
+.search-logo {
+  position: relative;
+  width: 15px;
+  margin-left: 60%;
+  /* border: none; */
+}
+
+.keyword {
+  /* border: purple 1px solid; */
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  color: #2d2d2d;
+}
+
+.definitions {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-start;
+  font-family: inter, sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+.keyword h1 {
+  font-size: 45px;
+  margin: 0 0 0.5rem 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.phonetic {
+  font-size: 1.1rem;
+  color: #a445ed;
+  letter-spacing: 1px;
+}
+
+.playSound {
+}
+
+.play-icon {
+  width: 60px;
 }
