@@ -6,9 +6,11 @@ function Keyword({ keyword }) {
   return (
     <div className="keyword">
       <h1>{keyword}</h1>
-      <div className="play-sound">
-        <img className="play-icon" src={playIcon} alt="" />
-      </div>
+      {keyword && (
+        <div className="play-sound">
+          <img className="play-icon" src={playIcon} alt="" />
+        </div>
+      )}
     </div>
   );
 }
