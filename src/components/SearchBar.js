@@ -14,7 +14,7 @@ function SearchBar({ onClick, onChange, keyword }) {
         value={keyword}
         autoComplete="off"
       />
-      <button onClick={onClick} className="search">
+      <button onClick={onClick} className="btn-search">
         <img className="search-logo" src={searchLogo} alt="" />
       </button>
     </div>

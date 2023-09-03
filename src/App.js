@@ -8,7 +8,7 @@ import Definitions from "./components/Definitions";
 
 function App() {
   const [keyword, setKeyword] = useState("");
-  const [definitons, setDefinitions] = useState([]);
+  const [partOfSpeech, setPartOfSpeech] = useState([]);
   const [word, setWord] = useState("");
   const [phonetic, setPhonetic] = useState("");
 
@@ -23,12 +23,13 @@ function App() {
         console.log(definitions);
         setWord(res.data[0].word);
         setPhonetic(res.data[0].phonetic);
+        setPartOfSpeech(res.data[0].meanings[0].partOfSpeech);
       })
       .catch((error) => {
         console.log("ERROR: ", error);
       });
   };
-
+  console.log(partOfSpeech);
   return (
     <div className="wrapper">
       <div className="settings">
@@ -39,7 +40,7 @@ function App() {
       </div>
       <Keyword keyword={word} />
       <div className="definitions">
-        <Definitions phonetic={phonetic} />
+        <Definitions phonetic={phonetic} partOfSpeech={partOfSpeech} />
       </div>
     </div>
   );

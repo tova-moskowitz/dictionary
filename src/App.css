@@ -15,32 +15,32 @@
 
 .search-bar {
   /* border: 1px blue solid; */
-  height: 45px;
+  height: 43px;
   background: #f4f4f4;
   border-radius: 11px;
   margin-bottom: 35px;
+  margin-left: 29px;
+  width: 100%;
 }
 
 .search-input {
-  margin-top: 23px;
-  margin-left: 20px;
+  margin-left: 15px;
   background: #f4f4f4;
   border: none;
+  height: 40px;
+  font-weight: 700;
 }
 
-.search-input::placeholder {
-  color: #2d2d2d;
-  font-size: 0.9rem;
-  font-weight: 700;
-  width: 211px;
-  height: 24px;
+.btn-search {
+  position: relative;
+  right: -295px;
+  border: none;
+  top: 3px;
+  background-color: #f4f4f4;
 }
 
 .search-logo {
-  position: relative;
-  width: 15px;
-  margin-left: 60%;
-  /* border: none; */
+  width: 13px;
 }
 
 .keyword {
@@ -67,11 +67,14 @@
   font-size: 1.1rem;
   color: #a445ed;
   letter-spacing: 1px;
+  margin-top: -10px;
 }
 
 .playSound {
 }
 
 .play-icon {
-  width: 60px;
+  margin-top: 15px;
+  width: 52px;
+  margin-right: -3px;
 }
