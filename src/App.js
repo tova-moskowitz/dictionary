@@ -39,9 +39,11 @@ function App() {
         <SearchBar onClick={onClick} onChange={onChange} keyword={keyword} />
       </div>
       <Keyword keyword={word} />
-      <div className="definitions">
-        <Definitions phonetic={phonetic} partOfSpeech={partOfSpeech} />
-      </div>
+      {word && (
+        <div className="definitions">
+          <Definitions phonetic={phonetic} partOfSpeech={partOfSpeech} />
+        </div>
+      )}
     </div>
   );
 }
