@@ -8,6 +8,8 @@ import Definitions from "./components/Definitions";
 
 function App() {
   const [keyword, setKeyword] = useState("");
+  const [definitions, setDefinitions] = useState("");
+  const [meanings, setMeanings] = useState("");
   const [partOfSpeech, setPartOfSpeech] = useState([]);
   const [word, setWord] = useState("");
   const [phonetic, setPhonetic] = useState("");
@@ -20,16 +22,24 @@ function App() {
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`)
       .then((res) => {
         const definitions = res.data;
-        console.log(definitions);
         setWord(res.data[0].word);
         setPhonetic(res.data[0].phonetic);
-        setPartOfSpeech(res.data[0].meanings[0].partOfSpeech);
+        setDefinitions(res.data[0]);
+        setMeanings(definitions[0].meanings);
+        getPartsOfSpeech(meanings);
       })
       .catch((error) => {
         console.log("ERROR: ", error);
       });
   };
-  console.log(partOfSpeech);
+
+  const getPartsOfSpeech = (meanings) => {
+    meanings.map((meaning) => {
+      setPartOfSpeech(meaning.partOfSpeech);
+    });
+  };
+
+  console.log(meanings);
   return (
     <div className="wrapper">
       <div className="settings">
