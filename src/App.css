@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&family=Outfit&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Outfit&display=swap");
 
 .wrapper {
   margin: auto;
@@ -58,7 +58,8 @@
 }
 
 .keyword h1 {
-  font-size: 45px;
+  font-family: inter;
+  font-size: 43px;
   margin: 0 0 0.5rem 0;
 }
 
@@ -67,6 +68,7 @@
   color: #a445ed;
   letter-spacing: 1px;
   margin-top: -10px;
+  font-weight: 400;
 }
 
 .playSound {
@@ -80,7 +82,7 @@
 
 .part-of-speech {
   font-weight: 700;
-  margin: 25px 0 50px 0;
+  margin: 25px 0 30px 0;
   position: relative;
 }
 
@@ -96,6 +98,7 @@
 
 .definitions header,
 .synonyms-header {
+  font-weight: 100;
   color: #757575;
   font-size: 15px;
 }
@@ -110,11 +113,17 @@
   margin-bottom: 17px;
   padding-left: 8px;
   color: #2d2d2d;
-  font-size: 15px;
-  font-family: inconsolata, sans-serif;
+  font-size: 13px;
+  font-family: inter, sans-serif;
+  font-weight: 400;
 }
 
 .definitions-list li::marker {
   color: #a445ed;
   font-size: 10px;
+}
+
+.example {
+  color: #757575;
+  margin-top: 10px;
 }

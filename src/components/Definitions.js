@@ -13,17 +13,23 @@ function Definitions({ meanings }) {
         <ul className="definitions-list">
           {meaning.definitions.map((definition) => {
             return (
-              <li className="defintion-li">
+              <li className="definition-li">
                 {definition.definition}
-                <div>{definition.example}</div>
+                {definition.example && (
+                  <div className="example">"{definition.example}"</div>
+                )}
               </li>
             );
           })}
         </ul>
-        <header className>
-          Synonyms&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-          <span className="synonyms">{meaning.synonyms}</span>
-        </header>
+        {meaning.synonyms.length > 0 && (
+          <header>
+            Synonyms&nbsp;&nbsp;&nbsp;&nbsp;
+            {meaning.synonyms.map((synonym) => {
+              return <span className="synonyms">{synonym}&nbsp;</span>;
+            })}
+          </header>
+        )}
       </div>
     );
   });
