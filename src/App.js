@@ -8,9 +8,9 @@ import Definitions from "./components/Definitions";
 
 function App() {
   const [keyword, setKeyword] = useState("");
-  const [definitions, setDefinitions] = useState("");
+  const [allData, setAllData] = useState("");
   const [meanings, setMeanings] = useState("");
-  const [partOfSpeech, setPartOfSpeech] = useState([]);
+  const [partsOfSpeech, setPartsOfSpeech] = useState([]);
   const [word, setWord] = useState("");
   const [phonetic, setPhonetic] = useState("");
 
@@ -21,25 +21,17 @@ function App() {
     axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`)
       .then((res) => {
-        const definitions = res.data;
-        setWord(res.data[0].word);
-        setPhonetic(res.data[0].phonetic);
-        setDefinitions(res.data[0]);
-        setMeanings(definitions[0].meanings);
-        getPartsOfSpeech(meanings);
+        const data = res.data[0];
+        setAllData(data);
+        setWord(data.word);
+        setPhonetic(data.phonetic);
+        setMeanings(data.meanings);
       })
       .catch((error) => {
         console.log("ERROR: ", error);
       });
   };
 
-  const getPartsOfSpeech = (meanings) => {
-    meanings.map((meaning) => {
-      setPartOfSpeech(meaning.partOfSpeech);
-    });
-  };
-
-  console.log(meanings);
   return (
     <div className="wrapper">
       <div className="settings">
@@ -51,7 +43,8 @@ function App() {
       <Keyword keyword={word} />
       {word && (
         <div className="definitions">
-          <Definitions phonetic={phonetic} partOfSpeech={partOfSpeech} />
+          <div className="phonetic">{phonetic}</div>
+          <Definitions meanings={meanings} />
         </div>
       )}
     </div>

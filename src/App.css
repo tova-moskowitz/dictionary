@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&family=Outfit&display=swap");
+
 .wrapper {
   margin: auto;
   width: 500px;
@@ -52,9 +54,6 @@
 }
 
 .definitions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   font-family: inter, sans-serif;
 }
 
@@ -81,10 +80,8 @@
 
 .part-of-speech {
   font-weight: 700;
-  margin-top: 25px;
+  margin: 25px 0 50px 0;
   position: relative;
-  max-width: 500px;
-  text-align: center;
 }
 
 .part-of-speech:after {
@@ -92,6 +89,32 @@
   width: 452px;
   position: absolute;
   top: 50%;
-  left: 50px;
+  left: 30px;
+  margin-left: 20px;
   border-top: 1px solid #e9e9e9;
+}
+
+.definitions header,
+.synonyms-header {
+  color: #757575;
+  font-size: 15px;
+}
+
+.synonyms {
+  color: #a445ed;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.definitions-list li {
+  margin-bottom: 17px;
+  padding-left: 8px;
+  color: #2d2d2d;
+  font-size: 15px;
+  font-family: inconsolata, sans-serif;
+}
+
+.definitions-list li::marker {
+  color: #a445ed;
+  font-size: 10px;
 }
