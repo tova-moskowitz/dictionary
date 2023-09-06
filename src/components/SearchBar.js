@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import searchLogo from "../assets/images/icon-search.svg";
 
-function SearchBar({ onClick, onChange, keyword }) {
+function SearchBar({ handleKeypress, handleSubmit, onChange, keyword }) {
   return (
     <div className="search-bar">
       <input
@@ -12,9 +12,9 @@ function SearchBar({ onClick, onChange, keyword }) {
         name="keyword"
         onChange={onChange}
         value={keyword}
-        autoComplete="off"
+        onKeyPress={handleKeypress}
       />
-      <button onClick={onClick} className="btn-search">
+      <button onClick={handleSubmit} className="btn-search">
         <img className="search-logo" src={searchLogo} alt="" />
       </button>
     </div>

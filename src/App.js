@@ -8,21 +8,25 @@ import Definitions from "./components/Definitions";
 
 function App() {
   const [keyword, setKeyword] = useState("");
-  const [allData, setAllData] = useState("");
   const [meanings, setMeanings] = useState("");
-  const [partsOfSpeech, setPartsOfSpeech] = useState([]);
   const [word, setWord] = useState("");
   const [phonetic, setPhonetic] = useState("");
 
   const onChange = (event) => {
     setKeyword(event.target.value);
   };
-  const onClick = () => {
+
+  const handleKeypress = (e) => {
+    if (e.charCode === 13) {
+      handleSubmit();
+    }
+  };
+
+  const handleSubmit = () => {
     axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`)
       .then((res) => {
         const data = res.data[0];
-        setAllData(data);
         setWord(data.word);
         setPhonetic(data.phonetic);
         setMeanings(data.meanings);
@@ -38,7 +42,12 @@ function App() {
         <SettingsBar />
       </div>
       <div className="search">
-        <SearchBar onClick={onClick} onChange={onChange} keyword={keyword} />
+        <SearchBar
+          handleKeypress={handleKeypress}
+          handleSubmit={handleSubmit}
+          onChange={onChange}
+          keyword={keyword}
+        />
       </div>
       <Keyword keyword={word} />
       {word && (

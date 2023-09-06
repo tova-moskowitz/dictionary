@@ -3,7 +3,6 @@ import "../App.css";
 
 function Definitions({ meanings }) {
   return meanings.map((meaning) => {
-    console.log(meaning);
     return (
       <div className="definitions">
         <div className="part-of-speech">
@@ -26,7 +25,7 @@ function Definitions({ meanings }) {
           <header>
             Synonyms&nbsp;&nbsp;&nbsp;&nbsp;
             {meaning.synonyms.map((synonym) => {
-              return <span className="synonyms">{synonym}&nbsp;</span>;
+              return <span className="synonyms">{synonym} </span>;
             })}
           </header>
         )}
