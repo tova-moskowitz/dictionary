@@ -31,7 +31,6 @@
 }
 
 .settings-bar {
-  /* border: 1px orangered solid; */
   height: 36px;
   margin: 40px -29px -10px 29px;
   display: flex;
@@ -44,7 +43,6 @@
 }
 
 .search-bar {
-  /* border: 1px blue solid; */
   height: 43px;
   background: #f4f4f4;
   border-radius: 11px;
@@ -73,7 +71,6 @@
 }
 
 .keyword {
-  /* border: purple 1px solid; */
   display: flex;
   margin: auto;
   justify-content: space-between;
