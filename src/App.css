@@ -1,4 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Outfit&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Lora";
+  src: local("Lora"),
+    url("./assets/fonts/lora/Lora-VariableFont_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"),
+    url("./assets/fonts/inter/Inter-VariableFont_slnt\,wght.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: local("Inconsolata"),
+    url("./assets/fonts/inconsolata/Inconsolata-VariableFont_wdth\,wght.ttf")
+      format("truetype");
+}
 
 .wrapper {
   margin: auto;
@@ -12,10 +33,7 @@
 .settings-bar {
   /* border: 1px orangered solid; */
   height: 36px;
-  margin-bottom: -10px;
-  margin-top: 40px;
-  margin-right: -29px;
-  margin-left: 29px;
+  margin: 40px -29px -10px 29px;
   display: flex;
   justify-content: space-between;
 }
@@ -60,15 +78,16 @@
   margin: auto;
   justify-content: space-between;
   color: #2d2d2d;
+  font-family: inconsolata;
 }
 
 .definitions {
-  font-family: inter, sans-serif;
+  font-family: "inter", sans-serif;
 }
 
 .keyword h1 {
   font-family: inter;
-  font-size: 43px;
+  font-size: 44px;
   margin: 0 0 0.5rem 0;
 }
 
@@ -135,4 +154,9 @@
 .example {
   color: #757575;
   margin-top: 10px;
+}
+
+.dark {
+  background-color: black;
+  color: white;
 }

@@ -5,6 +5,8 @@ import SettingsBar from "./components/SettingsBar";
 import SearchBar from "./components/SearchBar";
 import Keyword from "./components/Keyword";
 import Definitions from "./components/Definitions";
+import useLocalStorage from "use-local-storage";
+
 function App() {
   const [keyword, setKeyword] = useState("");
   const [meanings, setMeanings] = useState("");
@@ -12,6 +14,19 @@ function App() {
   const [phonetic, setPhonetic] = useState("");
   const [sourceUrl, setSourceUrl] = useState("");
   const [theme, setTheme] = useState("light");
+
+  const setThemeInStorage = (theme) => {
+    localStorage.setItem("theme", theme);
+  };
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    console.log(theme);
+    if (theme) {
+      document.body.className = theme;
+      // document.documentElement.classList.add("dark");
+    }
+  }, [theme]);
 
   const onChange = (event) => {
     setKeyword(event.target.value);
@@ -25,7 +40,8 @@ function App() {
 
   const toggleTheme = (e) => {
     setTheme(theme === "light" ? "dark" : "light");
-    document.body.className = theme;
+    setThemeInStorage(theme);
+    // console.log(theme);
   };
 
   const handleSubmit = () => {
@@ -44,13 +60,12 @@ function App() {
   };
 
   return (
-    <div className="wrapper">
+    <div bg-gray-200 data-theme={theme} className="wrapper">
       <div className="settings">
-        <SettingsBar />
+        <SettingsBar toggleTheme={toggleTheme} />
       </div>
       <div className="search">
         <SearchBar
-          toggleTheme={toggleTheme}
           handleKeypress={handleKeypress}
           handleSubmit={handleSubmit}
           onChange={onChange}

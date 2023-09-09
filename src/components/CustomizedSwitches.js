@@ -183,11 +183,11 @@ const AntSwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedSwitches({ theme }) {
+export default function CustomizedSwitches({ toggleTheme }) {
   return (
     <FormGroup>
       <Stack
-        onChange={theme}
+        onChange={toggleTheme}
         direction="row"
         justifyContent={"flex-end"}
         spacing={1.5}
