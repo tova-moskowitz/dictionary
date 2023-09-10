@@ -15,10 +15,13 @@ function App() {
   const [audioFile, setAudioFile] = useState("");
   const [sourceUrl, setSourceUrl] = useState("");
   const [theme, setTheme] = useState();
+  // const [checked, setChecked] = useState(true);
 
   const setThemeInStorage = (theme) => {
     localStorage.setItem("theme", theme === "dark" ? "light" : "dark");
     setTheme(localStorage.getItem("theme"));
+
+    // localStorage.setItem("checked", theme === "dark" ? "checked" : "disabled");
   };
 
   useEffect(() => {
@@ -40,6 +43,8 @@ function App() {
 
   const toggleTheme = (e) => {
     setTheme(theme === "dark" ? "light" : "dark");
+    // setChecked(e.target.checked);
+
     setThemeInStorage(theme);
   };
 
@@ -52,12 +57,22 @@ function App() {
         setPhonetic(data.phonetic);
         setSourceUrl(data.sourceUrls[0]);
         setMeanings(data.meanings);
-        setAudioFile(data.phonetics[1].audio);
+
+        data.phonetics.map((phonetic) => {
+          if (phonetic.audio.indexOf(`${word}-us`) !== 0) {
+            setAudioFile(phonetic.audio);
+          } else if (phonetic.audio.indexOf(`${word}-uk`) !== 0) {
+            setAudioFile(phonetic.audio);
+          } else if (phonetic.audio.indexOf(`${word}-au`) !== 0) {
+            setAudioFile(phonetic.audio);
+          }
+        });
       })
       .catch((error) => {
         console.log("ERROR: ", error);
       });
   };
+
   return (
     <div className="wrapper">
       <div className="settings">
