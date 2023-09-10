@@ -15,6 +15,8 @@ function App() {
   const [audioFile, setAudioFile] = useState("");
   const [sourceUrl, setSourceUrl] = useState("");
   const [theme, setTheme] = useState();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorClass, setErrorClass] = useState("error");
   // const [checked, setChecked] = useState(true);
 
   const setThemeInStorage = (theme) => {
@@ -52,6 +54,8 @@ function App() {
     axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`)
       .then((res) => {
+        setErrorMessage("");
+        setErrorClass("");
         const data = res.data[0];
         setWord(data.word);
         setPhonetic(data.phonetic);
@@ -68,8 +72,20 @@ function App() {
           }
         });
       })
-      .catch((error) => {
+      .catch((error, res) => {
         console.log("ERROR: ", error);
+
+        keyword === ""
+          ? setErrorMessage("Whoops, can't be empty...")
+          : setErrorMessage(
+              "Sorry, that word isn't in the dictionary. Please try a different word"
+            );
+
+        setErrorClass("error-border");
+        setWord("");
+        setPhonetic("");
+        setSourceUrl("");
+        setMeanings("");
       });
   };
 
@@ -84,7 +100,9 @@ function App() {
           handleSubmit={handleSubmit}
           onChange={onChange}
           keyword={keyword}
+          errorClass={errorClass}
         />
+        <div className="error">{errorMessage !== "" && errorMessage}</div>
       </div>
       <Keyword keyword={word} audioFile={audioFile} />
       {word && (
