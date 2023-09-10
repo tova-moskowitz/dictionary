@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import iconMoon from "../assets/images/icon-moon.svg";
 
-const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+const MaterialUISwitch = styled(Switch)(({ theme, mode }) => ({
   width: 62,
   height: 34,
   padding: 7,
@@ -25,12 +25,14 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
       },
       "& + .MuiSwitch-track": {
         opacity: 1,
-        backgroundColor: theme.palette.mode === "dark" ? "#8796A5" : "#aab4be",
+        backgroundColor: mode === "dark" ? "#A445ED" : "#aab4be",
+        // backgroundColor: mode === "dark" ? "#8796A5" : "#aab4be",
       },
     },
   },
   "& .MuiSwitch-thumb": {
-    backgroundColor: theme.palette.mode === "dark" ? "#003892" : "#001e3c",
+    backgroundColor: mode === "dark" ? "#A445ED" : "#001e3c",
+    // backgroundColor: mode === "dark" ? "#003892" : "#001e3c",
     width: 32,
     height: 32,
     "&:before": {
@@ -49,7 +51,8 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
   "& .MuiSwitch-track": {
     opacity: 1,
-    backgroundColor: theme.palette.mode === "dark" ? "#8796A5" : "#aab4be",
+    backgroundColor: mode === "dark" ? "#A445ED" : "#757575",
+    // backgroundColor: mode === "dark" ? "#8796A5" : "#aab4be",
     borderRadius: 20 / 2,
   },
 }));
@@ -89,7 +92,7 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
-))(({ theme }) => ({
+))(({ theme, mode }) => ({
   width: 42,
   height: 26,
   padding: 0,
@@ -101,11 +104,12 @@ const IOSSwitch = styled((props: SwitchProps) => (
       transform: "translateX(16px)",
       color: "#fff",
       "& + .MuiSwitch-track": {
-        backgroundColor: theme.palette.mode === "dark" ? "#2ECA45" : "#65C466",
+        backgroundColor: mode === "dark" ? "#A445ED" : "#757575",
+        // backgroundColor: mode === "dark" ? "#2ECA45" : "#65C466",
         opacity: 1,
         border: 0,
       },
-      "&.Mui-disabled + .MuiSwitch-track": {
+      "&.Mui-checked + .MuiSwitch-track": {
         opacity: 0.5,
       },
     },
@@ -113,13 +117,13 @@ const IOSSwitch = styled((props: SwitchProps) => (
       color: "#33cf4d",
       border: "6px solid #fff",
     },
-    "&.Mui-disabled .MuiSwitch-thumb": {
+    "&.Mui-checked .MuiSwitch-thumb": {
       color:
         theme.palette.mode === "light"
           ? theme.palette.grey[100]
           : theme.palette.grey[600],
     },
-    "&.Mui-disabled + .MuiSwitch-track": {
+    "&.Mui-checked + .MuiSwitch-track": {
       opacity: theme.palette.mode === "light" ? 0.7 : 0.3,
     },
   },
@@ -130,7 +134,8 @@ const IOSSwitch = styled((props: SwitchProps) => (
   },
   "& .MuiSwitch-track": {
     borderRadius: 26 / 2,
-    backgroundColor: theme.palette.mode === "light" ? "#E9E9EA" : "#39393D",
+    backgroundColor: mode === "dark" ? "#A445ED" : "#757575",
+    // backgroundColor: mode === "light" ? "#E9E9EA" : "#39393D",
     opacity: 1,
     transition: theme.transitions.create(["background-color"], {
       duration: 500,
@@ -138,7 +143,7 @@ const IOSSwitch = styled((props: SwitchProps) => (
   },
 }));
 
-const AntSwitch = styled(Switch)(({ theme }) => ({
+const AntSwitch = styled(Switch)(({ theme, mode }) => ({
   width: 28,
   height: 16,
   padding: 0,
@@ -159,7 +164,7 @@ const AntSwitch = styled(Switch)(({ theme }) => ({
       color: "#fff",
       "& + .MuiSwitch-track": {
         opacity: 1,
-        backgroundColor: theme.palette.mode === "dark" ? "#177ddc" : "#1890ff",
+        backgroundColor: mode === "dark" ? "#A445ED" : "#757575",
       },
     },
   },
@@ -175,15 +180,14 @@ const AntSwitch = styled(Switch)(({ theme }) => ({
   "& .MuiSwitch-track": {
     borderRadius: 16 / 2,
     opacity: 1,
-    backgroundColor:
-      theme.palette.mode === "dark"
-        ? "rgba(255,255,255,.35)"
-        : "rgba(0,0,0,.25)",
+    backgroundColor: mode === "dark" ? "#A445ED" : "#A445ED",
     boxSizing: "border-box",
   },
 }));
 
-export default function CustomizedSwitches({ toggleTheme }) {
+export default function CustomizedSwitches({ toggleTheme, mode }) {
+  // console.log(mode);
+
   return (
     <FormGroup>
       <Stack
