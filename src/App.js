@@ -5,17 +5,20 @@ import SettingsBar from "./components/SettingsBar";
 import SearchBar from "./components/SearchBar";
 import Keyword from "./components/Keyword";
 import Definitions from "./components/Definitions";
+import newWindow from "./assets/images/icon-new-window.svg";
 
 function App() {
   const [keyword, setKeyword] = useState("");
   const [meanings, setMeanings] = useState("");
   const [word, setWord] = useState("");
   const [phonetic, setPhonetic] = useState("");
+  const [audioFile, setAudioFile] = useState("");
   const [sourceUrl, setSourceUrl] = useState("");
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState();
 
   const setThemeInStorage = (theme) => {
-    localStorage.setItem("theme", theme);
+    localStorage.setItem("theme", theme === "dark" ? "light" : "dark");
+    setTheme(localStorage.getItem("theme"));
   };
 
   useEffect(() => {
@@ -36,7 +39,7 @@ function App() {
   };
 
   const toggleTheme = (e) => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme(theme === "dark" ? "light" : "dark");
     setThemeInStorage(theme);
   };
 
@@ -49,16 +52,16 @@ function App() {
         setPhonetic(data.phonetic);
         setSourceUrl(data.sourceUrls[0]);
         setMeanings(data.meanings);
+        setAudioFile(data.phonetics[1].audio);
       })
       .catch((error) => {
         console.log("ERROR: ", error);
       });
   };
-
   return (
     <div className="wrapper">
       <div className="settings">
-        <SettingsBar toggleTheme={toggleTheme} />
+        <SettingsBar toggleTheme={toggleTheme} mode={theme} />
       </div>
       <div className="search">
         <SearchBar
@@ -68,14 +71,19 @@ function App() {
           keyword={keyword}
         />
       </div>
-      <Keyword keyword={word} />
+      <Keyword keyword={word} audioFile={audioFile} />
       {word && (
         <div className="definitions">
           <div className="phonetic">{phonetic}</div>
           <Definitions meanings={meanings} />
+          <p>
+            source {sourceUrl}&nbsp;
+            <a href={sourceUrl} target="_blank">
+              <img src={newWindow} />
+            </a>
+          </p>
         </div>
       )}
-      <p>{sourceUrl}</p>
     </div>
   );
 }
