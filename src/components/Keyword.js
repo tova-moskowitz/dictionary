@@ -1,25 +1,13 @@
 import React from "react";
 import "../App.css";
 import playIcon from "../assets/images/icon-play.svg";
+import PlayIcon from "./PlayIcon";
 
 function Keyword({ keyword, audioFile }) {
-  const playAudio = () => {
-    new Audio(audioFile).play();
-  };
-
   return (
     <div className="keyword">
       <h1 className="font-bold">{keyword}</h1>
-      {audioFile && keyword && (
-        <div className="play-sound">
-          <img
-            onClick={playAudio}
-            className="play-icon"
-            src={playIcon}
-            alt="play icon"
-          />
-        </div>
-      )}
+      {audioFile && keyword && <PlayIcon audioFile={audioFile} />}
     </div>
   );
 }
