@@ -5,7 +5,8 @@ import SettingsBar from "./components/SettingsBar";
 import SearchBar from "./components/SearchBar";
 import Keyword from "./components/Keyword";
 import Definitions from "./components/Definitions";
-import newWindow from "./assets/images/icon-new-window.svg";
+import iconNewWindow from "./assets/images/icon-new-window.svg";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [keyword, setKeyword] = useState("");
@@ -15,6 +16,9 @@ function App() {
   const [audioFile, setAudioFile] = useState("");
   const [sourceUrl, setSourceUrl] = useState("");
   const [theme, setTheme] = useState();
+  const [errorType, setErrorType] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorClass, setErrorClass] = useState("error");
   // const [checked, setChecked] = useState(true);
 
   const setThemeInStorage = (theme) => {
@@ -49,9 +53,13 @@ function App() {
   };
 
   const handleSubmit = () => {
+    setErrorType("");
+
     axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`)
       .then((res) => {
+        setErrorMessage("");
+        setErrorClass("");
         const data = res.data[0];
         setWord(data.word);
         setPhonetic(data.phonetic);
@@ -70,6 +78,20 @@ function App() {
       })
       .catch((error) => {
         console.log("ERROR: ", error);
+        setErrorType("not-found");
+
+        if (keyword === "") {
+          setErrorMessage("Whoops, can't be empty...");
+          setErrorType("empty");
+          setErrorClass("error-border");
+        } else {
+          setErrorMessage("");
+        }
+
+        setWord("");
+        setPhonetic("");
+        setSourceUrl("");
+        setMeanings("");
       });
   };
 
@@ -84,8 +106,12 @@ function App() {
           handleSubmit={handleSubmit}
           onChange={onChange}
           keyword={keyword}
+          errorClass={errorClass}
         />
+        <div className="error">{errorMessage !== "" && errorMessage}</div>
       </div>
+      {errorType === "not-found" && <NotFound />}
+
       <Keyword keyword={word} audioFile={audioFile} />
       {word && (
         <div className="definitions">
@@ -94,7 +120,7 @@ function App() {
           <p>
             source {sourceUrl}&nbsp;
             <a href={sourceUrl} target="_blank">
-              <img src={newWindow} />
+              <img src={iconNewWindow} />
             </a>
           </p>
         </div>

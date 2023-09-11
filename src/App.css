@@ -24,6 +24,7 @@
   margin: auto;
   width: 500px;
 }
+
 .book-logo {
   height: 27px;
 }
@@ -43,8 +44,12 @@
   height: 43px;
   background: #f4f4f4;
   border-radius: 11px;
-  margin: 35px 0 35px 0;
+  margin: 35px 0 10px 0;
   width: 100%;
+
+  &:active {
+    border: 1px #a445ed solid;
+  }
 }
 
 .search-input {
@@ -53,13 +58,14 @@
   border: none;
   height: 40px;
   font-weight: 700;
+  width: 94%;
 }
 
 .btn-search {
   position: relative;
-  right: -295px;
+  right: -465px;
   border: none;
-  top: 2px;
+  top: -28px;
   background-color: #f4f4f4;
 }
 
@@ -70,6 +76,7 @@
 .keyword {
   display: flex;
   margin: auto;
+  margin-top: 35px;
   justify-content: space-between;
   color: #2d2d2d;
   font-family: inconsolata;
@@ -94,9 +101,6 @@
   color: #a445ed;
   margin-top: -9px;
   font-weight: 400;
-}
-
-.playSound {
 }
 
 .play-icon {
@@ -151,6 +155,28 @@
 .example {
   color: #757575;
   margin-top: 10px;
+}
+
+.error {
+  color: #ff5252;
+  font-size: 15px;
+}
+
+.error-border {
+  border: 1px #ff5252 solid;
+}
+
+.not-found {
+  margin-top: 90px;
+  text-align: center;
+}
+
+.not-found-error {
+  color: #757575;
+}
+
+.not-found-emoji {
+  font-size: 50px;
 }
 
 .dark {

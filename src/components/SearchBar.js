@@ -2,9 +2,15 @@ import React from "react";
 import "../App.css";
 import searchLogo from "../assets/images/icon-search.svg";
 
-function SearchBar({ handleKeypress, handleSubmit, onChange, keyword }) {
+function SearchBar({
+  errorClass,
+  handleKeypress,
+  handleSubmit,
+  onChange,
+  keyword,
+}) {
   return (
-    <div className="search-bar">
+    <div className={`search-bar ${errorClass}`}>
       <input
         className="search-input"
         type="text"
