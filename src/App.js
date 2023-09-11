@@ -5,7 +5,8 @@ import SettingsBar from "./components/SettingsBar";
 import SearchBar from "./components/SearchBar";
 import Keyword from "./components/Keyword";
 import Definitions from "./components/Definitions";
-import newWindow from "./assets/images/icon-new-window.svg";
+import iconNewWindow from "./assets/images/icon-new-window.svg";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [keyword, setKeyword] = useState("");
@@ -15,6 +16,7 @@ function App() {
   const [audioFile, setAudioFile] = useState("");
   const [sourceUrl, setSourceUrl] = useState("");
   const [theme, setTheme] = useState();
+  const [errorType, setErrorType] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [errorClass, setErrorClass] = useState("error");
   // const [checked, setChecked] = useState(true);
@@ -51,6 +53,8 @@ function App() {
   };
 
   const handleSubmit = () => {
+    setErrorType("");
+
     axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`)
       .then((res) => {
@@ -72,16 +76,18 @@ function App() {
           }
         });
       })
-      .catch((error, res) => {
+      .catch((error) => {
         console.log("ERROR: ", error);
+        setErrorType("not-found");
 
-        keyword === ""
-          ? setErrorMessage("Whoops, can't be empty...")
-          : setErrorMessage(
-              "Sorry, that word isn't in the dictionary. Please try a different word"
-            );
+        if (keyword === "") {
+          setErrorMessage("Whoops, can't be empty...");
+          setErrorType("empty");
+          setErrorClass("error-border");
+        } else {
+          setErrorMessage("");
+        }
 
-        setErrorClass("error-border");
         setWord("");
         setPhonetic("");
         setSourceUrl("");
@@ -104,6 +110,8 @@ function App() {
         />
         <div className="error">{errorMessage !== "" && errorMessage}</div>
       </div>
+      {errorType === "not-found" && <NotFound />}
+
       <Keyword keyword={word} audioFile={audioFile} />
       {word && (
         <div className="definitions">
@@ -112,7 +120,7 @@ function App() {
           <p>
             source {sourceUrl}&nbsp;
             <a href={sourceUrl} target="_blank">
-              <img src={newWindow} />
+              <img src={iconNewWindow} />
             </a>
           </p>
         </div>
