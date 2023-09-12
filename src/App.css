@@ -46,6 +46,7 @@
   border-radius: 11px;
   margin: 35px 0 10px 0;
   width: 100%;
+  caret-color: #a445ed;
 
   &:active {
     border: 1px #a445ed solid;
@@ -173,6 +174,7 @@
 
 .not-found-error {
   color: #757575;
+  font-size: 14px;
 }
 
 .not-found-emoji {
@@ -215,4 +217,17 @@
   .btn-search {
     background-color: #1f1f1f;
   }
+}
+
+.serif {
+  font-family: Lora;
+  font-weight: 700;
+}
+.sans-serif {
+  font-family: Inter;
+  font-weight: 700;
+}
+.mono {
+  font-family: Inconsolata;
+  font-weight: 700;
 }

@@ -117,6 +117,7 @@ function App() {
         <div className="definitions">
           <div className="phonetic">{phonetic}</div>
           <Definitions meanings={meanings} />
+          <hr />
           <p>
             source {sourceUrl}&nbsp;
             <a href={sourceUrl} target="_blank">
