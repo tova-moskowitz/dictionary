@@ -1,6 +1,5 @@
 import React from "react";
 import "../App.css";
-import playIcon from "../assets/images/icon-play.svg";
 import PlayIcon from "./PlayIcon";
 
 function Keyword({ keyword, audioFile }) {
