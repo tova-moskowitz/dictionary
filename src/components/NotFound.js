@@ -1,8 +1,7 @@
 import React from "react";
 import "../App.css";
-import PlayIcon from "./PlayIcon";
 
-function NotFound({ keyword, audioFile }) {
+function NotFound() {
   return (
     <div className="not-found">
       <h1 className="not-found-emoji">😕</h1>
