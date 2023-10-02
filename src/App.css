@@ -21,6 +21,7 @@
       format("truetype");
 }
 .wrapper {
+  font-family: Inconsolata;
   margin: auto;
   width: 500px;
 }
@@ -139,6 +140,10 @@
   font-size: 14px;
 }
 
+.synonyms:hover {
+  text-decoration: underline;
+}
+
 .definitions-list li {
   margin-bottom: 17px;
   padding-left: 8px;
@@ -181,6 +186,24 @@
   font-size: 50px;
 }
 
+.source-text-preceder {
+  color: #757575;
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.source {
+  color: #2d2d2d;
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.icon-new-window {
+  width: 12px;
+  position: relative;
+  top: 1px;
+}
+
 .dark {
   background: black;
   color: white;
@@ -201,10 +224,6 @@
     color: #ffffff;
   }
 
-  .part-of-speech:after {
-    border-top: 0.1px solid #757575;
-  }
-
   .search-input {
     background: #1f1f1f;
     color: white;
@@ -216,6 +235,9 @@
 
   .btn-search {
     background-color: #1f1f1f;
+  }
+  .source {
+    color: #ffff;
   }
 }
 

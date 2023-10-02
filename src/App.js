@@ -125,9 +125,11 @@ function App() {
           <Definitions meanings={meanings} handleSubmit={handleSubmit} />
           <hr />
           <p>
-            source {sourceUrl}&nbsp;
+            <span class="source-text-preceder">Source</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <span className="source">{sourceUrl}&nbsp;</span>
             <a href={sourceUrl} target="_blank">
-              <img src={iconNewWindow} />
+              <img class="icon-new-window" src={iconNewWindow} />
             </a>
           </p>
         </div>
