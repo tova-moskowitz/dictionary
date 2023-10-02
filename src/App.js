@@ -58,10 +58,8 @@ function App() {
 
   const handleSubmit = (e) => {
     setErrorType("");
-
-    const lookupWord = e.target.value || e.currentTarget.innerText;
+    const lookupWord = e.target.value || e.currentTarget.innerText || keyword;
     setKeyword(lookupWord);
-
     axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${lookupWord}`)
       .then((res) => {
