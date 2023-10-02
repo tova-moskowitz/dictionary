@@ -7,7 +7,6 @@ function PlayIcon({ audioFile }) {
   const [icon, setIcon] = useState(playIcon);
 
   const playAudio = () => {
-    console.log(audioFile);
     new Audio(audioFile).play();
   };
 

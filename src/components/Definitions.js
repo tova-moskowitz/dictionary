@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 
-function Definitions({ meanings }) {
+function Definitions({ meanings, handleSubmit }) {
   return meanings.map((meaning) => {
     return (
       <div className="definitions">
@@ -25,7 +25,11 @@ function Definitions({ meanings }) {
           <header>
             Synonyms&nbsp;&nbsp;&nbsp;&nbsp;
             {meaning.synonyms.map((synonym) => {
-              return <span className="synonyms">{synonym} </span>;
+              return (
+                <span onClick={handleSubmit} className="synonyms">
+                  {synonym}{" "}
+                </span>
+              );
             })}
           </header>
         )}
