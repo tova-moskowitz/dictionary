@@ -15,48 +15,55 @@ function App() {
   const [phonetic, setPhonetic] = useState("");
   const [audioFile, setAudioFile] = useState("");
   const [sourceUrl, setSourceUrl] = useState("");
-  const [theme, setTheme] = useState();
   const [errorType, setErrorType] = useState("");
+  const [errorResponse, setErrorResponse] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [errorClass, setErrorClass] = useState("error");
+  const [theme, setTheme] = useState("light");
+
+  // const [theme, setTheme] = useState(() => {
+  //   return localStorage.getItem("theme") || "light";
+  // });
+  // const [checked, setChecked] = useState(() => {
+  //   return JSON.parse(localStorage.getItem("checked")) || false;
+  // });
   // const [checked, setChecked] = useState(true);
 
-  const setThemeInStorage = (theme) => {
-    localStorage.setItem("theme", theme === "dark" ? "light" : "dark");
-    setTheme(localStorage.getItem("theme"));
+  const toggleTheme = (e) => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    document.body.classList = newTheme;
+    setTheme(newTheme);
 
-    // localStorage.setItem("checked", theme === "dark" ? "checked" : "disabled");
+    // const localStorageTheme = localStorage.getItem("theme");
+    // localStorage.setItem(
+    //   "theme",
+    //   localStorageTheme ? localStorageTheme : newTheme
+    // );
+    // localStorage.setItem("theme", e.target.checked ? "dark" : "light");
+    // setTheme(localStorage.getItem("theme") === "dark" ? "light" : "dark");
+
+    // localStorage.setItem("checked", e.target.checked);
+    // setChecked(JSON.parse(localStorage.getItem("checked")) ? false : true);
   };
 
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (theme) {
-      document.body.className = theme;
-    }
-  }, [theme]);
-
-  const onChange = (event) => {
-    setKeyword(event.target.value);
+  const onChange = (e) => {
+    setKeyword(e.target.value);
   };
 
   const handleKeypress = (e) => {
     if (e.charCode === 13) {
-      handleSubmit();
+      handleSubmit(e);
     }
   };
 
-  const toggleTheme = (e) => {
-    setTheme(theme === "dark" ? "light" : "dark");
-    // setChecked(e.target.checked);
-
-    setThemeInStorage(theme);
-  };
-
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     setErrorType("");
 
+    const lookupWord = e.target.value || e.currentTarget.innerText;
+    setKeyword(lookupWord);
+
     axios
-      .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`)
+      .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${lookupWord}`)
       .then((res) => {
         setErrorMessage("");
         setErrorClass("");
@@ -77,7 +84,8 @@ function App() {
         });
       })
       .catch((error) => {
-        console.log("ERROR: ", error);
+        console.log("ERROR: ", error.response.data);
+        setErrorResponse(error.response.data);
         setErrorType("not-found");
 
         if (keyword === "") {
@@ -98,7 +106,7 @@ function App() {
   return (
     <div className="wrapper">
       <div className="settings">
-        <SettingsBar toggleTheme={toggleTheme} mode={theme} />
+        <SettingsBar toggleTheme={toggleTheme} />
       </div>
       <div className="search">
         <SearchBar
@@ -110,13 +118,13 @@ function App() {
         />
         <div className="error">{errorMessage !== "" && errorMessage}</div>
       </div>
-      {errorType === "not-found" && <NotFound />}
+      {errorType === "not-found" && <NotFound errorResponse={errorResponse} />}
 
       <Keyword keyword={word} audioFile={audioFile} />
       {word && (
         <div className="definitions">
           <div className="phonetic">{phonetic}</div>
-          <Definitions meanings={meanings} />
+          <Definitions meanings={meanings} handleSubmit={handleSubmit} />
           <hr />
           <p>
             source {sourceUrl}&nbsp;
