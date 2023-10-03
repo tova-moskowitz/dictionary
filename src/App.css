@@ -65,6 +65,7 @@
   border-radius: 11px;
   padding-left: 15px;
   height: 80%;
+  overflow: hidden;
 }
 
 .font-select {
