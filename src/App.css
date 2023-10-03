@@ -48,7 +48,7 @@
   background: #f4f4f4;
   border-radius: 11px;
   margin: 35px 0 10px 0;
-  width: 99%;
+  width: 100%;
   caret-color: #a445ed;
 
   &:active {
@@ -61,10 +61,10 @@
   border: none;
   font-size: 16.5px;
   font-weight: 700;
-  max-width: 97%;
+  min-width: 94%;
   border-radius: 11px;
   padding-left: 15px;
-  height: 90%;
+  height: 85%;
 }
 
 .font-select {
