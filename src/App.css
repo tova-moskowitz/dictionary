@@ -63,7 +63,7 @@
   height: 35px;
   font-size: 16.5px;
   font-weight: 700;
-  min-width: 100%;
+  min-width: 96%;
   border-radius: 11px;
 }
 
@@ -73,8 +73,10 @@
   box-shadow: none;
   margin-left: 7em;
   margin-top: 0.25em;
+  font-weight: 700;
 }
-x .font-selection {
+
+.font-selection {
   position: relative;
 }
 
@@ -118,6 +120,7 @@ x .font-selection {
   color: #a445ed;
   margin-top: -9px;
   font-weight: 400;
+  font-family: "Inter";
 }
 
 .play-icon {
@@ -129,7 +132,7 @@ x .font-selection {
 .part-of-speech {
   display: flex;
   font-weight: 700;
-  margin: 25px 0 30px 0;
+  margin: 20px 0 30px 0;
   position: relative;
   max-width: 480px;
 }
@@ -140,7 +143,7 @@ x .font-selection {
   border-top: 1px solid #e9e9e9;
   position: relative;
   top: 9px;
-  left: 20px;
+  left: 10px;
 }
 
 .definitions header,
@@ -158,6 +161,7 @@ x .font-selection {
 
 .synonyms:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .definitions hr {
@@ -166,16 +170,16 @@ x .font-selection {
   background-color: #e9e9e9;
 }
 .definitions-list li {
-  margin-bottom: 17px;
+  margin-bottom: 12px;
   padding-left: 8px;
   color: #2d2d2d;
-  font-size: 13px;
   font-weight: 400;
+  font-size: 0.75em;
 }
 
 .definitions-list li::marker {
   color: #a445ed;
-  font-size: 10px;
+  /* font-size: 10px; */
 }
 
 .example {
@@ -249,7 +253,7 @@ x .font-selection {
   }
 
   .font-select {
-    box-shadow: 0px 2px 6px #a445ed;
+    /* box-shadow: 0px 2px 6px #a445ed; */
   }
 
   .search-input {
@@ -272,17 +276,39 @@ x .font-selection {
   }
 }
 
-.serif {
+.serif,
+.serif .search-input,
+.serif .font-select {
   font-family: "Lora", serif;
-  font-weight: 700;
 }
-.sansSerif {
+
+.serif .part-of-speech {
+  font-weight: 400;
   font-family: "Inter", sans-serif;
-  font-weight: 700;
 }
+
+.sans-serif,
+.sans-serif .search-input,
+.sans-serif .font-select {
+  font-family: "Inter", sans-serif;
+}
+
+.sansSerif .part-of-speech {
+  font-style: italic;
+}
+
 .mono {
   font-family: "Inconsolata";
+  font-size: 1.2em;
+}
+
+.mono .part-of-speech {
   font-weight: 700;
+}
+
+.mono .search-input,
+.mono .font-select {
+  font-family: "Inconsolata";
 }
 
 @media (min-width: 550px) {
