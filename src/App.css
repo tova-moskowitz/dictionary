@@ -287,9 +287,9 @@
   font-family: "Inter", sans-serif;
 }
 
-.sans-serif,
-.sans-serif .search-input,
-.sans-serif .font-select {
+.sansSerif,
+.sansSerif .search-input,
+.sansSerif .font-select {
   font-family: "Inter", sans-serif;
 }
 
