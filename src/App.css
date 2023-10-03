@@ -32,6 +32,7 @@
   margin: 40px 0 -10px 0;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 35px;
 }
 
 .icon-moon {
@@ -41,30 +42,32 @@
 
 .search {
   position: relative;
+  max-height: 45px;
+  border-radius: 11px;
 }
 
 .search-bar {
   height: 43px;
   background: #f4f4f4;
   border-radius: 11px;
-  margin: 35px 0 10px 0;
   width: 100%;
   caret-color: #a445ed;
+}
 
-  &:active {
-    border: 1px #a445ed solid;
-  }
+.focus {
+  border: 1px #a445ed solid;
 }
 
 .search-input {
+  outline: none;
   background: #f4f4f4;
   border: none;
   font-size: 16.5px;
   font-weight: 700;
-  min-width: 90%;
+  min-width: 96.5%;
   border-radius: 11px;
   padding-left: 15px;
-  height: 80%;
+  height: 91%;
 }
 
 .font-select {
@@ -189,6 +192,7 @@
 .error {
   color: #ff5252;
   font-size: 15px;
+  margin-top: 10px;
 }
 
 .error-border {

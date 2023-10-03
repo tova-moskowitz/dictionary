@@ -20,6 +20,7 @@ function App() {
   const [errorResponse, setErrorResponse] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [errorClass, setErrorClass] = useState("error");
+  const [focusClass, setFocusClass] = useState("");
   const [theme, setTheme] = useState("light");
   const [font, setFont] = useState("sansSerif");
 
@@ -60,6 +61,16 @@ function App() {
     if (e.charCode === 13) {
       handleSubmit(e);
     }
+  };
+
+  const onFocus = (e) => {
+    setFocusClass(errorClass === "error-border" ? "" : "focus");
+    console.log(e.target.value);
+  };
+
+  const onBlur = (e) => {
+    setFocusClass("");
+    console.log(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -116,8 +127,11 @@ function App() {
           theme={theme}
         />
       </div>
-      <div className="search">
+      <div className={`search ${focusClass}`}>
         <SearchBar
+          onBlur={onBlur}
+          onFocus={onFocus}
+          focusClass={focusClass}
           handleKeypress={handleKeypress}
           handleSubmit={handleSubmit}
           onChange={onChange}

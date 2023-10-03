@@ -3,6 +3,9 @@ import "../App.css";
 import searchLogo from "../assets/images/icon-search.svg";
 
 function SearchBar({
+  onFocus,
+  onBlur,
+  focusClass,
   errorClass,
   handleKeypress,
   handleSubmit,
@@ -10,8 +13,10 @@ function SearchBar({
   keyword,
 }) {
   return (
-    <div className={`search-bar ${errorClass}`}>
+    <div className={`search-bar ${errorClass} ${focusClass}`}>
       <input
+        onBlur={onBlur}
+        onFocus={onFocus}
         className="search-input"
         type="text"
         placeholder="Search for any word..."
