@@ -6,21 +6,17 @@ import { Popper } from "@mui/base/Popper";
 import { styled } from "@mui/system";
 import iconArrowDown from "../assets/images/icon-arrow-down.svg";
 
-export default function UnstyledSelectControlled() {
-  const [value, setValue] = React.useState("sansSerif");
+export default function UnstyledSelectControlled({ onChangeFontSelect }) {
   return (
-    <div>
-      <CustomSelect
-        value={value}
-        onChange={(_, newValue) => setValue(newValue)}
-      >
-        <StyledOption className="sans-serif" value={"sansSerif"}>
-          Sans Serif
+    <div className="font-selection">
+      <CustomSelect className="font-select" onChange={onChangeFontSelect}>
+        <StyledOption className="Sans-Serif" value="sansSerif">
+          Sans-Serif
         </StyledOption>
-        <StyledOption className="serif" value={"serif"}>
+        <StyledOption className="Serif" value="serif">
           Serif
         </StyledOption>
-        <StyledOption className="mono" value={"mono"}>
+        <StyledOption className="Mono" value="mono">
           Mono
         </StyledOption>
       </CustomSelect>

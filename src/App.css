@@ -21,7 +21,6 @@
       format("truetype");
 }
 .wrapper {
-  font-family: Inter;
   margin: 0 40px;
 }
 
@@ -68,6 +67,7 @@
 }
 
 .font-select {
+  /* border: 1px red solid; */
 }
 
 .btn-search {
@@ -88,11 +88,6 @@
   margin-top: 35px;
   justify-content: space-between;
   color: #2d2d2d;
-  font-family: inconsolata;
-}
-
-.definitions {
-  font-family: "inter", sans-serif;
 }
 
 .definitions-list {
@@ -100,7 +95,6 @@
 }
 
 .keyword h1 {
-  font-family: inter;
   font-size: 44px;
   margin: 0 0 0.5rem 0;
 }
@@ -162,7 +156,6 @@
   padding-left: 8px;
   color: #2d2d2d;
   font-size: 13px;
-  font-family: inter, sans-serif;
   font-weight: 400;
 }
 
@@ -261,16 +254,16 @@
   }
 }
 
-.serif {
-  font-family: Lora;
+.Serif {
+  font-family: "Lora", serif;
   font-weight: 700;
 }
-.sans-serif {
-  font-family: Inter;
+.Sans-Serif {
+  font-family: "Inter", sans-serif;
   font-weight: 700;
 }
-.mono {
-  font-family: Inconsolata;
+.Mono {
+  font-family: "Inconsolata";
   font-weight: 700;
 }
 
