@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/dictionary/static/css/main.86024d6f.css",
+    "main.css": "/dictionary/static/css/main.4798004d.css",
     "main.js": "/dictionary/static/js/main.724a7b9d.js",
     "static/js/787.0157ba9a.chunk.js": "/dictionary/static/js/787.0157ba9a.chunk.js",
     "static/media/Inter-VariableFont_slnt,wght.ttf": "/dictionary/static/media/Inter-VariableFont_slnt,wght.aadb65ac45347ff46699.ttf",
@@ -13,12 +13,12 @@
     "static/media/icon-search.svg": "/dictionary/static/media/icon-search.13357ba7763bb4388cba203d0388c375.svg",
     "static/media/icon-play-hover.svg": "/dictionary/static/media/icon-play-hover.ef5fc01e04d7e6193aba3df437d6e245.svg",
     "static/media/icon-play.svg": "/dictionary/static/media/icon-play.a659db0104303a8b8ae071e0cf90119d.svg",
-    "main.86024d6f.css.map": "/dictionary/static/css/main.86024d6f.css.map",
+    "main.4798004d.css.map": "/dictionary/static/css/main.4798004d.css.map",
     "main.724a7b9d.js.map": "/dictionary/static/js/main.724a7b9d.js.map",
     "787.0157ba9a.chunk.js.map": "/dictionary/static/js/787.0157ba9a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.86024d6f.css",
+    "static/css/main.4798004d.css",
     "static/js/main.724a7b9d.js"
   ]
 }
