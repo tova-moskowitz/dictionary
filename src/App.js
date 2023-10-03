@@ -127,7 +127,7 @@ function App() {
           theme={theme}
         />
       </div>
-      <div className={`search ${focusClass}`}>
+      <div className="search">
         <SearchBar
           onBlur={onBlur}
           onFocus={onFocus}

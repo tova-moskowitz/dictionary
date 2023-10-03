@@ -15,6 +15,7 @@ function SearchBar({
   return (
     <div className={`search-bar ${errorClass} ${focusClass}`}>
       <input
+        className={focusClass}
         onBlur={onBlur}
         onFocus={onFocus}
         className="search-input"
