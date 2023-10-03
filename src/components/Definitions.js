@@ -5,9 +5,7 @@ function Definitions({ meanings, handleSubmit }) {
   return meanings.map((meaning) => {
     return (
       <div className="definitions">
-        <div className="part-of-speech">
-          <em>{meaning.partOfSpeech}</em>
-        </div>
+        <div className="part-of-speech">{meaning.partOfSpeech}</div>
         <header>Meaning</header>
         <ul className="definitions-list">
           {meaning.definitions.map((definition) => {
