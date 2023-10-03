@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import cn from "classnames";
 import SettingsBar from "./components/SettingsBar";
 import SearchBar from "./components/SearchBar";
 import Keyword from "./components/Keyword";
@@ -20,6 +21,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
   const [errorClass, setErrorClass] = useState("error");
   const [theme, setTheme] = useState("light");
+  const [font, setFont] = useState("sansSerif");
 
   // const [theme, setTheme] = useState(() => {
   //   return localStorage.getItem("theme") || "light";
@@ -44,6 +46,10 @@ function App() {
 
     // localStorage.setItem("checked", e.target.checked);
     // setChecked(JSON.parse(localStorage.getItem("checked")) ? false : true);
+  };
+
+  const onChangeFontSelect = (e) => {
+    setFont(e.target.value);
   };
 
   const onChange = (e) => {
@@ -102,9 +108,13 @@ function App() {
   };
 
   return (
-    <div className="wrapper">
+    <div className={`wrapper ${font}`}>
       <div className="settings">
-        <SettingsBar toggleTheme={toggleTheme} />
+        <SettingsBar
+          toggleTheme={toggleTheme}
+          onChangeFontSelect={onChangeFontSelect}
+          theme={theme}
+        />
       </div>
       <div className="search">
         <SearchBar
@@ -125,11 +135,11 @@ function App() {
           <Definitions meanings={meanings} handleSubmit={handleSubmit} />
           <hr />
           <p>
-            <span class="source-text-preceder">Source</span>
+            <span className="source-text-preceder">Source</span>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <span className="source">{sourceUrl}&nbsp;</span>
             <a href={sourceUrl} target="_blank">
-              <img class="icon-new-window" src={iconNewWindow} />
+              <img className="icon-new-window" src={iconNewWindow} />
             </a>
           </p>
         </div>
