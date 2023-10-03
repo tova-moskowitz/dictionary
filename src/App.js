@@ -21,7 +21,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
   const [errorClass, setErrorClass] = useState("error");
   const [theme, setTheme] = useState("light");
-  const [font, setFont] = useState("Sans-Serif");
+  const [font, setFont] = useState("sansSerif");
 
   // const [theme, setTheme] = useState(() => {
   //   return localStorage.getItem("theme") || "light";
@@ -49,7 +49,7 @@ function App() {
   };
 
   const onChangeFontSelect = (e) => {
-    setFont(e.target.innerHTML);
+    setFont(e.target.value);
   };
 
   const onChange = (e) => {
@@ -113,6 +113,7 @@ function App() {
         <SettingsBar
           toggleTheme={toggleTheme}
           onChangeFontSelect={onChangeFontSelect}
+          theme={theme}
         />
       </div>
       <div className="search">
