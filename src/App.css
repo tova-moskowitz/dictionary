@@ -48,7 +48,7 @@
   background: #f4f4f4;
   border-radius: 11px;
   margin: 35px 0 10px 0;
-  width: 94%;
+  width: 99%;
   caret-color: #a445ed;
 
   &:active {
@@ -57,14 +57,14 @@
 }
 
 .search-input {
-  margin-left: 15px;
   background: #f4f4f4;
   border: none;
-  height: 35px;
   font-size: 16.5px;
   font-weight: 700;
-  min-width: 96%;
+  max-width: 97%;
   border-radius: 11px;
+  padding-left: 15px;
+  height: 92%;
 }
 
 .font-select {
@@ -126,7 +126,6 @@
 .play-icon {
   margin-top: 15px;
   width: 52px;
-  margin-right: -3px;
 }
 
 .part-of-speech {
