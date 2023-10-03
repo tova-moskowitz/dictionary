@@ -88,6 +88,7 @@
   content: "|";
   color: #e9e9e9;
   position: absolute;
+  left: 196px;
 }
 
 .btn-search {
@@ -323,5 +324,9 @@
   .font-select {
     margin-left: 23em;
     margin-right: 0.75em;
+  }
+
+  .font-selection:after {
+    left: 400px;
   }
 }
